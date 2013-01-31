@@ -17,8 +17,8 @@ class GitRepo
     output.split("\n").map{|s| s.split("\t")}.map! do |r| 
       name, email = r.last.split(/ \<(.*)\>/)
 
-      # now userpic can be found http://www.gravatar.com/avatar/#{email_hash}"
-      email_hash = Digest::MD5.hexdigest(email.downcase)
+      # userpic can be found http://www.gravatar.com/avatar/#{email_hash}"
+      # email_hash = Digest::MD5.hexdigest(email.downcase)
 
       [r.first.to_i, name, email]
     end

@@ -12,7 +12,7 @@ class RedisPopulator
       data.each do |position|
         score, author, email  = position
 
-        @redis.zadd("#{name}_leaderboard", score, author)
+        @redis.zadd("#{name}_leaderboard", score, "#{author}:#{email}")
       end
     end
   end
