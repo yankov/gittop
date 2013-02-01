@@ -24,9 +24,9 @@ class CLI
         end
 
         opts.on("-r", "--redis [REDIS_URL]", String, "Write leaderboards to Redis") do |redis_url|
-          p redis_url
-          options[:redis] = true 
-          options[:redis_url] = redis_url
+          redis_url = "redis://#{redis_url}" unless redis_url =~ /^redis\:\/\//
+          
+          options[:redis_url] = URI.parse(redis_url)
         end
 
       end

@@ -10,7 +10,7 @@ class GitRepo
 
     opts << "--until #{options[:until]}" if options[:until]
 
-    puts "git --git-dir=#{@path}/.git shortlog -sne #{opts.join(' ')} --all"
+    # puts "git --git-dir=#{@path}/.git shortlog -sne #{opts.join(' ')} --all"
 
     output = `git --git-dir=#{@path}/.git shortlog -sne #{opts.join(' ')} --all`.chop
 

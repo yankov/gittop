@@ -1,12 +1,15 @@
+#!/usr/bin/env ruby
+
 require 'date'
 require 'erb'
 require 'redis'
 require 'optparse'
+require 'uri'
 
-require_relative "gittop/git_repo"
-require_relative "gittop/js_generator"
-require_relative "gittop/redis_populator"
-require_relative "gittop/cli"
+require_relative "lib/gittop/git_repo"
+require_relative "lib/gittop/js_generator"
+require_relative "lib/gittop/redis_populator"
+require_relative "lib/gittop/cli"
 
 options = CLI.parse_options(ARGV)
 
@@ -17,10 +20,12 @@ leaderboards = { :all_time => @repo.leaderboard(:all_time),
                  :weekly   => @repo.leaderboard(:weekly),
                  :daily    => @repo.leaderboard(:daily) }
 
-
-if options[:redis]
-  redis = RedisPopulator.new(host: 'localhost', port: 6379 )
+if options[:redis_url]
+  redis = RedisPopulator.new(host: options[:redis_url].host, port: options[:redis_url].port )
   redis.save(leaderboards)
+
+  puts "Leaderboards have been loaded into Redis"
 else
+  puts "leaderboards.js has been created"
   JSGenerator.save(leaderboards) 
 end
