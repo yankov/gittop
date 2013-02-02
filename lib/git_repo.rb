@@ -23,7 +23,7 @@ class GitRepo
       email_hash = ::Digest::MD5.hexdigest(email) 
       
       [r.first.to_i, name, email_hash]
-    end
+    end[0..99]
   end
 
   def today

@@ -1,6 +1,7 @@
 .row {
   display: table-row;
   border-spacing:0px 13px;
+  border-bottom: solid 2px black;
 }
 
 .leaderboard {
