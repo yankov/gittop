@@ -1,27 +1,45 @@
 .row {
   display: table-row;
-  border-spacing:0px 13px;
-  border-bottom: solid 2px black;
+  border-spacing:10px 20px;
+  border-bottom: 1px solid #bbb;
+  vertical-align: middle;
+}
+
+.row span {
+  padding: 2px;
 }
 
 .leaderboard {
   display: table;
-  /*border-collapse:separate; */
-  /*border-spacing:1px 5px;*/
+  border-collapse: collapse;
 }
 
 .positionN {
   font-size: 10px;
   display: table-cell;
+  vertical-align: middle;
 }
 
 .name {
   display: table-cell;
-  padding-left: 8px;
-  width: 40px;
+  padding-left: 10px;
+  width: 60px;
+  color: #4183c4;
+}
+
+.avatar {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.avatar img {
+  border-radius: 3px;
+  border: 1px solid #bbb;
 }
 
 .score {
-  padding-left:3px;
+  padding-left:6px;
   display: table-cell;
+  color: #f17f49;
+  vertical-align: middle;
 }
