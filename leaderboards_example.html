@@ -13,6 +13,8 @@
 
 <script type = "text/javascript">
   function buildLeaderboard(lName, positions) {
+    if (positions.length == 0) $('.' + lName).html('<span class="label label-important">No Data</span>')
+
     $.each(positions, function(i, position){
       
       posDiv = createDivPosition(i + 1, position)
@@ -39,16 +41,40 @@
   $(document).ready(function() {
 
     buildLeaderboard("all_time", all_time_leaderboard)
+    buildLeaderboard("monthly", monthly_leaderboard)
+    buildLeaderboard("weekly", weekly_leaderboard)
+    buildLeaderboard("daily", daily_leaderboard)
 
   })
 </script>
 
  <div class="container">
+  <div class="hero-unit">
+    <h1>Rails</h1>
+    <p>Top Committers</p>
+  </div>
 
-  <div class="leaderboard all_time">  </div>
-  <div class="leaderboard monthly">  </div>
-  <div class="leaderboard weekly">  </div>
-  <div class="leaderboard daily">  </div>
+  <div class='row'>
+    <div class='leaderboardWrapper span3'>
+        <div class='lName'><span class="label label-info">All Time</span></div>
+        <div class="leaderboard all_time"> </div> 
+    </div>
+
+    <div class='leaderboardWrapper span3'>
+        <div class='lName'><span class="label label-info">Month</span></div>
+        <div class="leaderboard monthly"> </div> 
+    </div>
+
+    <div class='leaderboardWrapper span3'>
+        <div class='lName'><span class="label label-info">Week</span></div>
+        <div class="leaderboard weekly"> </div> 
+    </div>
+
+    <div class='leaderboardWrapper span3'>
+        <div class='lName'><span class="label label-info">Day</span></div>
+        <div class="leaderboard daily"> </div> 
+    </div>
+</div>
 
 </div>
 </body>

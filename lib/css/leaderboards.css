@@ -1,12 +1,24 @@
-.row {
+.span3 {width: 240px;}
+.leaderboard .row {
   display: table-row;
   border-spacing:10px 20px;
   border-bottom: 1px solid #bbb;
   vertical-align: middle;
 }
+.leaderboardWrapper .lName {text-align: center;}
 
-.row span {
+.lName {
+  margin-bottom: 10px;
+}
+
+.lName span {
+  font-size: 13px;
+}
+
+.leaderboard .row span {
   padding: 2px;
+  vertical-align: middle;
+  display: table-cell;
 }
 
 .leaderboard {
@@ -16,20 +28,15 @@
 
 .positionN {
   font-size: 10px;
-  display: table-cell;
-  vertical-align: middle;
 }
 
 .name {
-  display: table-cell;
   padding-left: 10px;
-  width: 60px;
   color: #4183c4;
 }
 
 .avatar {
-  display: table-cell;
-  vertical-align: middle;
+
 }
 
 .avatar img {
@@ -39,7 +46,5 @@
 
 .score {
   padding-left:6px;
-  display: table-cell;
   color: #f17f49;
-  vertical-align: middle;
 }
