@@ -5,11 +5,12 @@ require 'erb'
 require 'redis'
 require 'optparse'
 require 'uri'
+require 'digest'
 
-require_relative "lib/gittop/git_repo"
-require_relative "lib/gittop/js_generator"
-require_relative "lib/gittop/redis_populator"
-require_relative "lib/gittop/cli"
+require_relative "lib/git_repo"
+require_relative "lib/js_generator"
+require_relative "lib/redis_populator"
+require_relative "lib/cli"
 
 options = CLI.parse_options(ARGV)
 
