@@ -1,0 +1,26 @@
+.row {
+  display: table-row;
+  border-spacing:0px 13px;
+}
+
+.leaderboard {
+  display: table;
+  /*border-collapse:separate; */
+  /*border-spacing:1px 5px;*/
+}
+
+.positionN {
+  font-size: 10px;
+  display: table-cell;
+}
+
+.name {
+  display: table-cell;
+  padding-left: 8px;
+  width: 40px;
+}
+
+.score {
+  padding-left:3px;
+  display: table-cell;
+}

@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="lib/css/leaderboards.css" rel="stylesheet">
+
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
-
   <script src="leaderboards.js"></script>
 </head>
 <body>
@@ -13,37 +14,40 @@
   function buildLeaderboard(lName, positions) {
     $.each(positions, function(i, position){
       
-      posHtml = createHTMLPosition(position)
-      $('.container').append(posHtml)
+      posDiv = createDivPosition(i + 1, position)
+
+      $('.' + lName).append(posDiv)
 
     })
   }
 
-  function createHTMLPosition(position) {
+  function createDivPosition(i, position) {
       score        = position[0]
       name         = position[1]
       gravatarHash = position[2]
 
       posDiv = $("<div></div>")
-        .addClass('row')
-        .append($('<span></span>'))
-          .addClass('span8')
-          .append("<span class='score'>" + score + "</span>")
-          .append("<img src='http://www.gravatar.com/avatar/" + gravatarHash + "?s=25' class='avatar' />")
-          .append("<span class='name'>"  + name  + "</span>")
+        .addClass('row position_' + i)
+        .append("<span class='positionN'>"  + i  + "</span>")
+        .append("<img  class='avatar' src='http://www.gravatar.com/avatar/" + gravatarHash + "?s=25' class='avatar' />")
+        .append("<span class='name'>"  + name  + "</span>")
+        .append("<span class='score'>" + score + "</span>")
       return posDiv
   }
 
   $(document).ready(function() {
 
-    buildLeaderboard("weekly", all_time_leaderboard)
+    buildLeaderboard("all_time", all_time_leaderboard)
 
   })
 </script>
 
  <div class="container">
 
-  <div class="row">  </div>
+  <div class="leaderboard all_time">  </div>
+  <div class="leaderboard monthly">  </div>
+  <div class="leaderboard weekly">  </div>
+  <div class="leaderboard daily">  </div>
 
 </div>
 </body>
