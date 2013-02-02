@@ -12,8 +12,8 @@ module JSGenerator
       ERB.new(template_file)
     end
 
-    def save(leaderboards)
-      File.open('leaderboards.js', 'w') do |f|
+    def save(filename, leaderboards)
+      File.open(filename, 'w') do |f|
         f.write template.result(binding)
       end
     end

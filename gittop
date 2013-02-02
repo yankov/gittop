@@ -20,12 +20,16 @@ leaderboards = { :all_time => @repo.leaderboard(:all_time),
                  :weekly   => @repo.leaderboard(:weekly),
                  :daily    => @repo.leaderboard(:daily) }
 
+if options[:filename]
+  JSGenerator.save(options[:filename], leaderboards) 
+  
+  puts "Leaderboards have been saved to '#{options[:filename]}'"
+end
+
 if options[:redis_url]
   redis = RedisPopulator.new(host: options[:redis_url].host, port: options[:redis_url].port )
   redis.save(leaderboards)
 
-  puts "Leaderboards have been loaded into Redis"
-else
-  puts "leaderboards.js has been created"
-  JSGenerator.save(leaderboards) 
+  puts "Leaderboards have been loaded into Redis. Check sorted sets: *_leaderboard"
 end
+

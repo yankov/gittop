@@ -7,12 +7,12 @@ class CLI
       opts = OptionParser.new do |opts|
         opts.banner = "Usage: gittop [repository_path] [options]"
         opts.separator ""
-        opts.separator "By default generates and stores leaderboards positions in a JS file"
-        opts.separator "Separate array for each leaderboard."
+        opts.separator "Generates leaderboards of commiters from a git repository."
+        opts.separator "Saves data either as JS array in a file or in Redis."
         opts.separator ""
         opts.separator "Examples:"
         opts.separator ""
-        opts.separator "gittop                                          Use repo in a current folder"
+        opts.separator "gittop -f                                       Save leaderboards in a JS file"
         opts.separator "gittop /ruby/myproj                             Specifies path to repository"
         opts.separator "gittop /ruby/myproj --redis localhost:6379      Generate leaderboards and store in Redis"
         opts.separator ""
@@ -23,9 +23,15 @@ class CLI
           exit
         end
 
-        opts.on("-r", "--redis [REDIS_URL]", String, "Write leaderboards to Redis") do |redis_url|
+        opts.on("-f", "--file [FILENAME]", String, "Save leaderboards in a JS file") do |filename|
+          filename = "leaderboards.js" if filename.nil?
+
+          options[:filename] = filename
+        end
+
+        opts.on("-r", "--redis REDIS_URL", String, "Save leaderboards in Redis") do |redis_url|
           redis_url = "redis://#{redis_url}" unless redis_url =~ /^redis\:\/\//
-          
+
           options[:redis_url] = URI.parse(redis_url)
         end
 
@@ -34,9 +40,8 @@ class CLI
       begin
         opts.parse!(args)
         options[:repo_path] = ARGV.first || "."
-
+        raise OptionParser::MissingArgument if options[:filename].nil? && options[:redis_url].nil?
       rescue OptionParser::InvalidOption, OptionParser::MissingArgument      
-        puts $!.to_s                                                           
         puts opts                                                          
         exit                                                                   
       end                                                                      
