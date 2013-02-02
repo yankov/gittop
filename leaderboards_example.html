@@ -16,11 +16,8 @@
     if (positions.length == 0) $('.' + lName).html('<span class="label label-important">No Data</span>')
 
     $.each(positions, function(i, position){
-      
       posDiv = createDivPosition(i + 1, position)
-
       $('.' + lName).append(posDiv)
-
     })
   }
 
@@ -40,6 +37,7 @@
 
   $(document).ready(function() {
 
+    $(".updateTime").html(lastUpdated)
     buildLeaderboard("all_time", all_time_leaderboard)
     buildLeaderboard("monthly", monthly_leaderboard)
     buildLeaderboard("weekly", weekly_leaderboard)
@@ -52,6 +50,7 @@
   <div class="hero-unit">
     <h1>Rails</h1>
     <p>Top Committers</p>
+    <p class="text-info">Last updated: <span class='updateTime'>unknown</span></p>
   </div>
 
   <div class='row'>
@@ -71,7 +70,7 @@
     </div>
 
     <div class='leaderboardWrapper span3'>
-        <div class='lName'><span class="label label-info">Day</span></div>
+        <div class='lName'><span class="label label-info">Today</span></div>
         <div class="leaderboard daily"> </div> 
     </div>
 </div>

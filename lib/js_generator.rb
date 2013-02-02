@@ -13,6 +13,7 @@ module JSGenerator
     end
 
     def save(filename, leaderboards)
+      @now = Time.now
       File.open(filename, 'w') do |f|
         f.write template.result(binding)
       end
