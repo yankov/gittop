@@ -52,7 +52,7 @@ class GitRepo
   def monthly_leaderboard
     beginning_of_month = today.strftime('%Y-%m-01')
 
-    git_summary(:since => beginning_of_month)
+    git_summary(:since => "\"#{beginning_of_month} 00:00am\"")
   end
 
   def weekly_leaderboard
@@ -62,13 +62,11 @@ class GitRepo
       (today - today.wday + 1).strftime('%Y-%m-%d')
     end
 
-    git_summary(:since => monday)
+    git_summary(:since => "\"#{monday} 00:00am\"")
   end
 
   def daily_leaderboard
-    date_of_today = today.strftime('%Y-%m-%d')
-
-    git_summary(:since => date_of_today)
+    git_summary(:since => "00:00am")
   end
 
 end
