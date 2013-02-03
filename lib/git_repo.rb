@@ -14,7 +14,7 @@ class GitRepo
 
     output = `git --git-dir=#{@path}/.git shortlog -sne #{opts.join(' ')} --all`.chop
 
-    output.split("\n").map{|s| s.split("\t")}.map! do |r| 
+    output.encode('UTF-8', 'UTF-8', :invalid => :replace).split("\n").map{|s| s.split("\t")}.map! do |r| 
       name, email = r.last.split(/ \<(.*)\>/)
 
       name = "unknown" if name.nil?
