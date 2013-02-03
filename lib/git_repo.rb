@@ -56,7 +56,11 @@ class GitRepo
   end
 
   def weekly_leaderboard
-    monday = (today - today.wday + 1).strftime('%Y-%m-%d')
+    monday = if today.wday == 0
+      (today - 6).strftime('%Y-%m-%d')
+    else
+      (today - today.wday + 1).strftime('%Y-%m-%d')
+    end
 
     git_summary(:since => monday)
   end
