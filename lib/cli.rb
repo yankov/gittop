@@ -13,7 +13,7 @@ class CLI
         opts.separator "Examples:"
         opts.separator ""
         opts.separator "gittop -f                                       Save leaderboards in a JS file"
-        opts.separator "gittop /ruby/myproj                             Specifies path to repository"
+        opts.separator "gittop /ruby/myproj -f                          Specifies path to repository"
         opts.separator "gittop /ruby/myproj --redis localhost:6379      Generate leaderboards and store in Redis"
         opts.separator ""
         opts.separator "Specific options:"
