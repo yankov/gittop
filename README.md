@@ -1,7 +1,7 @@
 
 Gittop is a simple tool to generate contributors' leaderboards for any git repository. It uses standard `git` utility to get log statistics and then stores data either in Redis or as JS array in a file. Here are examples of such leaderboards generated for some popular open source projects [gitboards](http://artemyankov.com/gitboards/).  
 
-Example how this generated data can be used to build leaderboards can be found in leaderboards_example.html  
+Also, example of how this generated data can be used to display leaderboards on a page can be found in leaderboards_example.html
 
 Gittop generates four types of leaderboards: "all time", "monthly", "weekly" and "daily". Monthly and weekly leaderboards show data for the current month and current week accordingly.
 They are reset in the beginning of each period.
